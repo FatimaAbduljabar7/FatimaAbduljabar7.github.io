@@ -9,11 +9,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
 :root {
-  --bg:       #03050d;
-  --bg2:      #060a18;
-  --bg3:      #080e1f;
-  --surface:  #0a1226;
-  --surf2:    #0d162e;
+  --bg:       #000005;
+  --bg2:      #02030f;
+  --bg3:      #040614;
+  --surface:  #080d20;
+  --surf2:    #0a1128;
 
   --blue:     #3b82f6;
   --blue-b:   #60a5fa;
@@ -51,20 +51,16 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 
-/* ─ STARFIELD ─ */
-#stars{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.star{position:absolute;border-radius:50%;background:#fff;animation:twinkle var(--dur,3s) ease-in-out infinite var(--delay,0s)}
-@keyframes twinkle{0%,100%{opacity:var(--min,.1)}50%{opacity:var(--max,.7)}}
 
 /* ─ MESH GLOW BG ─ */
 .mesh{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.mesh-orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:.55}
-.m1{width:900px;height:700px;top:-200px;right:-200px;background:radial-gradient(circle,rgba(59,130,246,.22),rgba(99,102,241,.18),transparent 70%);animation:drift1 18s ease-in-out infinite}
-.m2{width:700px;height:700px;bottom:-150px;left:-200px;background:radial-gradient(circle,rgba(139,92,246,.18),rgba(59,130,246,.12),transparent 70%);animation:drift2 22s ease-in-out infinite}
-.m3{width:400px;height:400px;top:40%;left:35%;background:radial-gradient(circle,rgba(34,211,238,.12),transparent 70%);animation:drift3 14s ease-in-out infinite}
-@keyframes drift1{0%,100%{transform:translate(0,0)}50%{transform:translate(-60px,80px)}}
-@keyframes drift2{0%,100%{transform:translate(0,0)}50%{transform:translate(80px,-60px)}}
-@keyframes drift3{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,50px)}}
+.mesh-orb{position:absolute;border-radius:50%;filter:blur(160px);opacity:.7}
+.m1{width:800px;height:800px;top:-250px;right:-200px;background:radial-gradient(circle,rgba(60,60,200,.55),rgba(80,40,180,.4),transparent 65%);animation:drift1 20s ease-in-out infinite}
+.m2{width:700px;height:700px;bottom:-200px;left:-200px;background:radial-gradient(circle,rgba(80,30,180,.5),rgba(60,20,160,.35),transparent 65%);animation:drift2 24s ease-in-out infinite}
+.m3{width:500px;height:400px;top:30%;left:20%;background:radial-gradient(circle,rgba(40,50,200,.3),transparent 65%);animation:drift3 16s ease-in-out infinite}
+@keyframes drift1{0%,100%{transform:translate(0,0)}50%{transform:translate(-80px,60px)}}
+@keyframes drift2{0%,100%{transform:translate(0,0)}50%{transform:translate(80px,-80px)}}
+@keyframes drift3{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,60px)}}
 
 /* ─ NAV ─ */
 nav{
@@ -522,8 +518,6 @@ footer{
 </head>
 <body>
 
-<!-- Stars -->
-<div id="stars"></div>
 <!-- Mesh -->
 <div class="mesh">
   <div class="mesh-orb m1"></div>
@@ -988,22 +982,6 @@ footer{
 </footer>
 
 <script>
-/* ── STARS */
-(function(){
-  const c=document.getElementById('stars');
-  for(let i=0;i<120;i++){
-    const s=document.createElement('div');
-    s.className='star';
-    const sz=Math.random()*2+.5;
-    s.style.cssText=`
-      width:${sz}px;height:${sz}px;
-      top:${Math.random()*100}%;left:${Math.random()*100}%;
-      --dur:${3+Math.random()*5}s;--delay:${Math.random()*6}s;
-      --min:${.05+Math.random()*.15};--max:${.4+Math.random()*.6};
-    `;
-    c.appendChild(s);
-  }
-})();
 
 /* ── SKILLS */
 const SKILLS=[
